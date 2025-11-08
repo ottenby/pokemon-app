@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import QueryProvider from "./components/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +29,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <QueryProvider>
+          <nav>
+            <ul>
+              <Link href="/pokemon-list">pokemon list</Link>
+            </ul>
+          </nav>
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

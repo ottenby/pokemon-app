@@ -1,6 +1,7 @@
 "use client";
 import { getAllGeneration1Pokemon } from "@/api/pokemon-api";
 import { useQuery } from "@tanstack/react-query";
+import PokemonListItem from "./PokemonListItem";
 
 const Pokemons = () => {
   const { data, error, isLoading, isError } = useQuery({
@@ -14,9 +15,7 @@ const Pokemons = () => {
     <div>
       <h1>List view</h1>
       {data?.map((pokemon, key) => (
-        <div key={key}>
-          <p>{pokemon.name}</p>
-        </div>
+        <PokemonListItem pokemon={pokemon} key={key} />
       ))}
     </div>
   );

@@ -14,3 +14,24 @@ type PokemonGenericAttributeType = {
 type PokemonEvolutionChainType = {
   url: string;
 };
+
+type PokemonDetailsType = {
+  name: string;
+  height: number;
+  weight: number;
+  moves: string[];
+  stats: PokemonDetailsStatsType[];
+  types: PokemonDetailsTypeType[];
+  image: string;
+};
+
+type PokemonDetailsStatsType = {
+  baseStat: number;
+  effort: number;
+  stat: string;
+};
+
+type PokemonDetailsTypeType = {
+  slot: number;
+  type: string;
+};

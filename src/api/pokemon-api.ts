@@ -31,12 +31,7 @@ export const getAllGeneration1Pokemon = async () => {
         id: pokemon.data.id,
         shape: pokemon.data.shape,
         color: pokemon.data.color,
-        baseHappiness: pokemon.data.baseHappiness,
-        captureRate: pokemon.data.captureRate,
-        eggGroups: pokemon.data.eggGroups,
-        evolutionChain: pokemon.data.evolutionChain,
         generation: pokemon.data.generation,
-        growthRate: pokemon.data.growthRate,
       };
     });
 

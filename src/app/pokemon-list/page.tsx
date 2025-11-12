@@ -9,11 +9,8 @@ const Pokemons = () => {
     queryFn: getAllGeneration1Pokemon,
   });
 
-  console.log("data:", data);
-
   return (
-    <div>
-      <h1>List view</h1>
+    <div className="grid grid-cols-4 gap-8 bg-gray-200 p-8">
       {data?.map((pokemon, key) => (
         <PokemonListItem pokemon={pokemon} key={key} />
       ))}

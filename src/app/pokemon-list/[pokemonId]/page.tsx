@@ -1,5 +1,6 @@
 "use client";
 import { getPokemonById } from "@/api/pokemon-api";
+import { capitalizeFirstLetter } from "@/utils/textUtils";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -10,10 +11,6 @@ const PokemonDetailsPage = () => {
   if (!pokemonId) {
     return;
   }
-
-  const capitalizeFirstLetter = (val: string | undefined) => {
-    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
-  };
 
   const getPokemon = async () => {
     return getPokemonById(pokemonId);

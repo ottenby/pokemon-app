@@ -18,6 +18,8 @@ const PokemonListItem = ({ pokemon }: PokemonListItemType) => {
           {capitalizeFirstLetter(pokemon.name)}
         </h3>
         <Image
+          className="w-full h-auto"
+          loading="eager"
           alt={pokemon.name}
           height={100}
           width={100}

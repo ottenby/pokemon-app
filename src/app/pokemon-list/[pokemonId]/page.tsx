@@ -43,28 +43,39 @@ const PokemonDetailsPage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center px-4">
       <h1>{capitalizeFirstLetter(data?.name)}</h1>
-      <p>{data?.description}</p>
-      <div className="flex flex-row justify-center gap-10 items-center">
-        {pokemonId > 1 && (
-          <Link href={`${returnPokemonId("minus")}`}>Prev</Link>
-        )}
+      <div className="flex flex-col md:flex-row gap-3 lg:gap-14 items-center">
         {data?.image && (
-          <Image alt={data?.name} width={300} height={300} src={data?.image} />
+          <Image
+            loading="eager"
+            className="max-w-50 w-full h-auto"
+            alt={data?.name}
+            width={100}
+            height={100}
+            src={data?.image}
+          />
         )}
-        <div className="p-10 bg-gray-200 rounded-md h-full">
-          <p>Height: {data?.height}</p>
-          <p>Weight: {data?.weight}</p>
+        <div>
+          <p>{data?.description}</p>
+          <div className="flex flex-col items-center md:items-start p-4 lg:p-10 bg-gray-200 rounded-md h-full w-full md:w-auto mt-10 whitespace-nowrap">
+            <p>Height: {data?.height}</p>
+            <p>Weight: {data?.weight}</p>
+          </div>
         </div>
-        {pokemonId < 150 && (
-          <Link href={`${returnPokemonId("plus")}`}>Next</Link>
-        )}
       </div>
-      <div className="flex flex-row gap-10 mt-10">
+      <div className="flex flex-row gap-6 mt-10">
         {data?.types.map((type, key) => (
           <PokemonTypePill key={key} type={type} />
         ))}
+      </div>
+      <div className="flex flex-row gap-10 mt-10">
+        {pokemonId > 1 && (
+          <Link href={`${returnPokemonId("minus")}`}>Prev</Link>
+        )}
+        {pokemonId < 150 && (
+          <Link href={`${returnPokemonId("plus")}`}>Next</Link>
+        )}
       </div>
     </div>
   );

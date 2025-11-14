@@ -60,26 +60,6 @@ const PokemonDetailsPage = () => {
           <Link href={`${returnPokemonId("plus")}`}>Next</Link>
         )}
       </div>
-      <div className="grid grid-cols-2">
-        {/* <div>
-          <h2>Moves:</h2>
-          {data?.moves.map((move, key) => (
-            <p key={key}>{capitalizeFirstLetter(move)}</p>
-          ))}
-        </div> */}
-        {/* <div>
-          <h2>Stats:</h2>
-          <div className="flex wrap">
-            {data?.stats.map((stat, key) => (
-              <div className="border p-3" key={key}>
-                <h3>{capitalizeFirstLetter(stat.stat)}</h3>
-                <p>Base stat: {stat.baseStat}</p>
-                <p>Effort: {stat.effort}</p>
-              </div>
-            ))}
-          </div>
-        </div> */}
-      </div>
     </div>
   );
 };

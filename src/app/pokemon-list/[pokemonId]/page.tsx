@@ -43,7 +43,7 @@ const PokemonDetailsPage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center px-4">
+    <div className="bg-gray-100 flex flex-col items-center px-4 border rounded-md mx-auto md:max-w-200">
       <h1>{capitalizeFirstLetter(data?.name)}</h1>
       <div className="flex flex-col md:flex-row gap-3 lg:gap-14 items-center">
         {data?.image && (
@@ -58,7 +58,7 @@ const PokemonDetailsPage = () => {
         )}
         <div>
           <p>{data?.description}</p>
-          <div className="flex flex-col items-center md:items-start p-4 lg:p-10 bg-gray-200 rounded-md h-full w-full md:w-auto mt-10 whitespace-nowrap">
+          <div className="flex flex-col items-center md:items-start p-4 lg:p-10 bg-white border rounded-md h-full w-full md:w-auto mt-10 whitespace-nowrap">
             <p>Height: {data?.height}</p>
             <p>Weight: {data?.weight}</p>
           </div>

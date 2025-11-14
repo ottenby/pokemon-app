@@ -4,6 +4,7 @@ type PokemonType = {
   shape: PokemonGenericAttributeType;
   color: PokemonGenericAttributeType;
   generation: PokemonGenericAttributeType;
+  order: number;
 };
 
 type PokemonGenericAttributeType = {

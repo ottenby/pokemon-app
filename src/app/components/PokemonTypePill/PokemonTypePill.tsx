@@ -34,7 +34,8 @@ const PokemonTypePill = ({ type }: PokemonTypePillProps) => {
   return (
     <div
       className={
-        getTypeColor(type) + " rounded-4xl p-4 flex justify-center items-center"
+        getTypeColor(type) +
+        " rounded-4xl p-4 flex justify-center items-center min-w-20"
       }
     >
       <p>{type}</p>

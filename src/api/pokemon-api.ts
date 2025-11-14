@@ -55,6 +55,7 @@ export const getAllGeneration1Pokemon = async () => {
       return {
         name: pokemon.data.name,
         id: pokemon.data.id,
+        order: pokemon.data.order,
         shape: pokemon.data.shape,
         color: pokemon.data.color,
         generation: pokemon.data.generation,

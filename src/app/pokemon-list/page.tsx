@@ -17,13 +17,15 @@ const Pokemons = () => {
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    data && setFilteredPokemon(data);
+    data && setFilteredPokemon(data.sort((a, b) => a.order - b.order));
   }, [data]);
 
   useEffect(() => {
     if (searchValue !== "") {
       setFilteredPokemon(
-        data?.filter((pokemon) => pokemon.name.includes(searchValue))
+        data
+          ?.filter((pokemon) => pokemon.name.includes(searchValue))
+          .sort((a, b) => a.order - b.order)
       );
     } else {
       setFilteredPokemon(data);

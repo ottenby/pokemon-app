@@ -11,16 +11,26 @@ const Pokemons = () => {
     queryFn: getAllGeneration1Pokemon,
   });
 
-  const [filteredPokemons, setFilteredPokemon] = useState(data);
+  const [filteredPokemons, setFilteredPokemon] = useState<
+    PokemonType[] | undefined
+  >([]);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    setFilteredPokemon(
-      data?.filter((pokemon) => pokemon.name.includes(searchValue))
-    );
+    data && setFilteredPokemon(data);
+  }, [data]);
+
+  useEffect(() => {
+    if (searchValue !== "") {
+      setFilteredPokemon(
+        data?.filter((pokemon) => pokemon.name.includes(searchValue))
+      );
+    } else {
+      setFilteredPokemon(data);
+    }
   }, [searchValue]);
 
-  if (isLoading) {
+  if (isLoading || isError) {
     return (
       <LoadingAndErrorComponent
         isError={isError}

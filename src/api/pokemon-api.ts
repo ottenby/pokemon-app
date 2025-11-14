@@ -8,27 +8,31 @@ export const getPokemonById = async (
   id: number
 ): Promise<PokemonDetailsType | null> => {
   try {
-    const response = await axios.get(`${POKEAPI_BASE_URL}/pokemon/${id}`);
+    // Fetch data from the Pokemon API for the specific Pokemon ID
+    const pokemonResponse = await axios.get(
+      `${POKEAPI_BASE_URL}/pokemon/${id}`
+    );
+    const pokemonData = pokemonResponse.data;
 
+    // Fetch data from the Characteristic API for the same Pokemon ID
+    const characteristicResponse = await axios.get(
+      `${POKEAPI_BASE_URL}/characteristic/${id}`
+    );
+    const characteristicData = characteristicResponse.data.descriptions;
     return {
-      name: response.data.name,
-      height: response.data.height,
-      weight: response.data.weight,
-      moves: response.data.moves.map((move: any) => move.move.name),
-      stats: response.data.stats.map((stat: any) => {
-        return {
-          baseStat: stat.base_stat,
-          effort: stat.effort,
-          stat: stat.stat.name,
-        };
-      }),
-      types: response.data.types.map((type: any) => {
+      name: pokemonData.name,
+      height: pokemonData.height,
+      weight: pokemonData.weight,
+      description: characteristicData.find(
+        (description: any) => description.language.name === "en"
+      ).description,
+      types: pokemonData.types.map((type: any) => {
         return {
           slot: type.slot,
           type: type.type.name,
         };
       }),
-      image: response.data.sprites.other.dream_world.front_default,
+      image: pokemonData.sprites.other.dream_world.front_default,
     };
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);

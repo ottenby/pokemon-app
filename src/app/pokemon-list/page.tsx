@@ -42,6 +42,7 @@ const Pokemons = () => {
   return (
     <div>
       <input
+        className="border mb-4 ml-4"
         type="text"
         value={searchValue}
         onChange={(e) => {

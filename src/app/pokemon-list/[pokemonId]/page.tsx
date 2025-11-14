@@ -1,6 +1,7 @@
 "use client";
 import { getPokemonById } from "@/api/pokemon-api";
 import LoadingAndErrorComponent from "@/app/components/LoadingAndErrorComponent/LoadingAndErrorComponent";
+import PokemonTypePill from "@/app/components/PokemonTypePill/PokemonTypePill";
 import { capitalizeFirstLetter } from "@/utils/textUtils";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -59,6 +60,11 @@ const PokemonDetailsPage = () => {
         {pokemonId < 150 && (
           <Link href={`${returnPokemonId("plus")}`}>Next</Link>
         )}
+      </div>
+      <div className="flex flex-row gap-10 mt-10">
+        {data?.types.map((type, key) => (
+          <PokemonTypePill key={key} type={type} />
+        ))}
       </div>
     </div>
   );

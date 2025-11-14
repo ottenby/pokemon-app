@@ -31,12 +31,7 @@ export const getPokemonById = async (
             (description: any) => description.language.name === "en"
           ).description
         : undefined,
-      types: pokemonData.types.map((type: any) => {
-        return {
-          slot: type.slot,
-          type: type.type.name,
-        };
-      }),
+      types: pokemonData.types.map((type: any) => type.type.name),
       image: pokemonData.sprites.other.dream_world.front_default,
     };
   } catch (error) {

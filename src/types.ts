@@ -24,13 +24,19 @@ type PokemonDetailsType = {
   image: string;
 };
 
-type PokemonDetailsStatsType = {
-  baseStat: number;
-  effort: number;
-  stat: string;
-};
-
-type PokemonDetailsTypeType = {
-  slot: number;
-  type: string;
-};
+type PokemonDetailsTypeType =
+  | "bug"
+  | "dragon"
+  | "electric"
+  | "fighting"
+  | "fire"
+  | "flying"
+  | "ghost"
+  | "grass"
+  | "ground"
+  | "ice"
+  | "normal"
+  | "poison"
+  | "psychic"
+  | "rock"
+  | "water";

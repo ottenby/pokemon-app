@@ -19,7 +19,7 @@ type PokemonDetailsType = {
   name: string;
   height: number;
   weight: number;
-  description: string;
+  description?: string;
   types: PokemonDetailsTypeType[];
   image: string;
 };

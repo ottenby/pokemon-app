@@ -14,18 +14,23 @@ export const getPokemonById = async (
     );
     const pokemonData = pokemonResponse.data;
 
-    // Fetch data from the Characteristic API for the same Pokemon ID
-    const characteristicResponse = await axios.get(
-      `${POKEAPI_BASE_URL}/characteristic/${id}`
-    );
-    const characteristicData = characteristicResponse.data.descriptions;
+    let characteristicData;
+    if (id < 31) {
+      // Fetch data from the Characteristic API for the same Pokemon ID if ID is lower than 31
+      const characteristicResponse = await axios.get(
+        `${POKEAPI_BASE_URL}/characteristic/${id}`
+      );
+      characteristicData = characteristicResponse.data.descriptions;
+    } else characteristicData = undefined;
     return {
       name: pokemonData.name,
       height: pokemonData.height,
       weight: pokemonData.weight,
-      description: characteristicData.find(
-        (description: any) => description.language.name === "en"
-      ).description,
+      description: characteristicData
+        ? characteristicData.find(
+            (description: any) => description.language.name === "en"
+          ).description
+        : undefined,
       types: pokemonData.types.map((type: any) => {
         return {
           slot: type.slot,

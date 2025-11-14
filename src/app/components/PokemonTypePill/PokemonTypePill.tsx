@@ -1,7 +1,7 @@
 import { capitalizeFirstLetter } from "@/utils/textUtils";
 
 type PokemonTypePillProps = {
-  type?: PokemonDetailsTypeType;
+  type: PokemonDetailsTypeType;
 };
 
 const PokemonTypePill = ({ type }: PokemonTypePillProps) => {
@@ -32,18 +32,13 @@ const PokemonTypePill = ({ type }: PokemonTypePillProps) => {
   };
 
   return (
-    <>
-      {type && (
-        <div
-          className={
-            getTypeColor(type) +
-            " rounded-4xl p-4 flex justify-center items-center"
-          }
-        >
-          <p>{type}</p>
-        </div>
-      )}
-    </>
+    <div
+      className={
+        getTypeColor(type) + " rounded-4xl p-4 flex justify-center items-center"
+      }
+    >
+      <p>{type}</p>
+    </div>
   );
 };
 

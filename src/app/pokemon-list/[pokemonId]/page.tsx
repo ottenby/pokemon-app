@@ -1,12 +1,12 @@
 "use client";
 import { getPokemonById } from "@/api/pokemon-api";
 import LoadingAndErrorComponent from "@/app/components/LoadingAndErrorComponent/LoadingAndErrorComponent";
-import PokemonTypePill from "@/app/components/PokemonTypePill/PokemonTypePill";
 import { capitalizeFirstLetter } from "@/utils/textUtils";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import Link from "next/link";
 import { useParams } from "next/navigation";
+import PrevAndNextPokemonLink from "./PrevAndNextPokemonLink";
+import PokemonInformation from "./PokemonInformation";
 
 const PokemonDetailsPage = () => {
   const params = useParams();
@@ -24,15 +24,7 @@ const PokemonDetailsPage = () => {
     queryFn: getPokemon,
   });
 
-  const returnPokemonId = (action: "minus" | "plus") => {
-    if (action === "minus") {
-      return pokemonId - 1;
-    } else {
-      return pokemonId + 1;
-    }
-  };
-
-  if (isLoading) {
+  if (isLoading || isError) {
     return (
       <LoadingAndErrorComponent
         isLoading={isLoading}
@@ -56,25 +48,14 @@ const PokemonDetailsPage = () => {
             src={data?.image}
           />
         )}
-        <div>
-          <p>{data?.description}</p>
-          <div className="flex flex-col items-center md:items-start p-4 lg:p-10 bg-white border rounded-md h-full w-full md:w-auto mt-10 whitespace-nowrap">
-            <p>Height: {data?.height}</p>
-            <p>Weight: {data?.weight}</p>
-          </div>
-        </div>
+        <PokemonInformation pokemonData={data} />
       </div>
-      <div className="flex flex-row gap-6 mt-10">
-        {data?.types.map((type, key) => (
-          <PokemonTypePill key={key} type={type} />
-        ))}
-      </div>
-      <div className="flex flex-row gap-10 mt-10">
+      <div className="flex flex-row gap-10 mt-10 w-full justify-between">
         {pokemonId > 1 && (
-          <Link href={`${returnPokemonId("minus")}`}>Prev</Link>
+          <PrevAndNextPokemonLink currentPokemonId={pokemonId} action="minus" />
         )}
-        {pokemonId < 150 && (
-          <Link href={`${returnPokemonId("plus")}`}>Next</Link>
+        {pokemonId < 151 && (
+          <PrevAndNextPokemonLink currentPokemonId={pokemonId} action="plus" />
         )}
       </div>
     </div>

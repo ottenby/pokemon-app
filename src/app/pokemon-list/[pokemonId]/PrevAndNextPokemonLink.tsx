@@ -41,7 +41,7 @@ const PrevAndNextPokemonLink = ({
   if (data) {
     return (
       <Link
-        className="flex flex-row items-center"
+        className="flex flex-row items-center text-purple-900"
         href={`/pokemon-list/${returnPokemonId(action)}`}
       >
         {action === "minus" && <LeftArrowIcon />}

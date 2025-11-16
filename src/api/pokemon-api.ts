@@ -1,3 +1,9 @@
+import {
+  FetchedCharacteristicType,
+  FetchedPokemonDetailsType,
+  PokemonDetailsType,
+  PokemonListItemType,
+} from "@/types";
 import axios from "axios";
 
 // Base URL of the PokeAPI
@@ -6,15 +12,15 @@ const POKEAPI_BASE_URL = "https://pokeapi.co/api/v2";
 // Function to fetch data for a specific Pokemon by ID
 export const getPokemonById = async (
   id: number
-): Promise<PokemonDetailsType | null> => {
+): Promise<PokemonDetailsType | undefined> => {
   try {
     // Fetch data from the Pokemon API for the specific Pokemon ID
     const pokemonResponse = await axios.get(
       `${POKEAPI_BASE_URL}/pokemon/${id}`
     );
-    const pokemonData = pokemonResponse.data;
+    const pokemonData: FetchedPokemonDetailsType = pokemonResponse.data;
 
-    let characteristicData;
+    let characteristicData: FetchedCharacteristicType[] | undefined;
     if (id < 31) {
       // Fetch data from the Characteristic API for the same Pokemon ID if ID is lower than 31
       const characteristicResponse = await axios.get(
@@ -28,12 +34,12 @@ export const getPokemonById = async (
       weight: pokemonData.weight,
       description: characteristicData
         ? characteristicData.find(
-            (description: any) => description.language.name === "en"
-          ).description
+            (characteristic) => characteristic.language.name === "en"
+          )?.description
         : undefined,
-      types: pokemonData.types.map((type: any) => type.type.name),
+      types: pokemonData.types.map((type) => type.type.name),
       image: pokemonData.sprites.other.dream_world.front_default,
-      stats: pokemonData.stats.map((stat: any) => {
+      stats: pokemonData.stats.map((stat) => {
         return {
           baseStat: stat.base_stat,
           effort: stat.effort,
@@ -43,7 +49,7 @@ export const getPokemonById = async (
     };
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);
-    return null;
+    return undefined;
   }
 };
 
@@ -52,7 +58,7 @@ export const getAllGeneration1Pokemon = async () => {
   try {
     const response = await axios.get(`${POKEAPI_BASE_URL}/generation/1`);
     const pokemonUrls = response.data.pokemon_species.map(
-      (pokemon: any) => pokemon.url
+      (pokemon: { name: string; url: string }) => pokemon.url
     );
     const pokemonData = await Promise.all(
       pokemonUrls.map((url: string) => axios.get(url))
@@ -64,9 +70,6 @@ export const getAllGeneration1Pokemon = async () => {
           name: pokemon.data.name,
           id: pokemon.data.id,
           order: pokemon.data.order,
-          shape: pokemon.data.shape,
-          color: pokemon.data.color,
-          generation: pokemon.data.generation,
         };
       }
     );

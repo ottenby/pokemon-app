@@ -1,10 +1,64 @@
-type PokemonListItemType = {
+export type FetchedPokemonType = {
+  name: string;
+  id: number;
+  order: number;
+  shape: {
+    name: string;
+    url: string;
+  };
+  color: {
+    name: string;
+    url: string;
+  };
+  generation: {
+    name: string;
+    url: string;
+  };
+};
+
+export type FetchedPokemonDetailsType = {
+  name: string;
+  height: number;
+  weight: number;
+  types: {
+    slot: number;
+    type: {
+      name: PokemonDetailsTypeType;
+      url: string;
+    };
+  }[];
+  sprites: {
+    other: {
+      dream_world: {
+        front_default: string;
+      };
+    };
+  };
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }[];
+};
+
+export type FetchedCharacteristicType = {
+  description: string;
+  language: {
+    name: string;
+    url: string;
+  };
+};
+
+export type PokemonListItemType = {
   name: string;
   id: number;
   order: number;
 };
 
-type PokemonDetailsType = {
+export type PokemonDetailsType = {
   name: string;
   height: number;
   weight: number;
@@ -20,7 +74,7 @@ type PokemonDetailsStatsType = {
   statName: string;
 };
 
-type PokemonDetailsTypeType =
+export type PokemonDetailsTypeType =
   | "bug"
   | "dragon"
   | "electric"

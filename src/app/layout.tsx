@@ -4,7 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import QueryProvider from "../providers/QueryProvider";
 import localFont from "next/font/local";
-import { Header } from "./components/Header/Header";
+import { Header } from "../components/Header/Header";
 
 const pokemonFont = localFont({
   src: "../assets/pokemon-normal.ttf",
@@ -37,12 +37,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryProvider>
-          <div className={pokemonFont.className}>
-            <Header />
-          </div>
-          {children}
-        </QueryProvider>
+        <div className={pokemonFont.className}>
+          <Header />
+        </div>
+        {children}
       </body>
     </html>
   );

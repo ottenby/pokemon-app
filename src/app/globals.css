@@ -39,11 +39,3 @@ h3 {
   font-size: 1.17em; /* 1.17 times the base font size */
   margin-bottom: 0.5em; 
 }
-
-a {
-  color: blue;
-}
-
-a h3 {
-  color: black
-}

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import PokemonListItem from "./PokemonListItem";
 import LoadingAndErrorComponent from "../components/LoadingAndErrorComponent/LoadingAndErrorComponent";
 import { useEffect, useState } from "react";
+import { SearchPokemonInput } from "./SearchPokemonInput/SearchPokemonInput";
 
 const Pokemons = () => {
   const { data, error, isLoading, isError } = useQuery({
@@ -43,15 +44,11 @@ const Pokemons = () => {
   }
   return (
     <div>
-      <input
-        className="border mb-4 ml-4"
-        type="text"
-        value={searchValue}
-        onChange={(e) => {
-          setSearchValue(e.target.value);
-        }}
+      <SearchPokemonInput
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
       />
-      <div className="grid grid-cols-4 gap-8 bg-gray-200 p-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-10 md:mt-4 bg-gray-200 p-4 md:p-8">
         {filteredPokemons?.map((pokemon, key) => (
           <PokemonListItem pokemon={pokemon} key={key} />
         ))}

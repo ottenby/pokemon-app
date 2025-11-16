@@ -33,6 +33,13 @@ export const getPokemonById = async (
         : undefined,
       types: pokemonData.types.map((type: any) => type.type.name),
       image: pokemonData.sprites.other.dream_world.front_default,
+      stats: pokemonData.stats.map((stat: any) => {
+        return {
+          baseStat: stat.base_stat,
+          effort: stat.effort,
+          statName: stat.stat.name,
+        };
+      }),
     };
   } catch (error) {
     console.error("Error fetching Pokemon data:", error);
@@ -51,16 +58,18 @@ export const getAllGeneration1Pokemon = async () => {
       pokemonUrls.map((url: string) => axios.get(url))
     );
 
-    const translatedPokemons: PokemonType[] = pokemonData.map((pokemon) => {
-      return {
-        name: pokemon.data.name,
-        id: pokemon.data.id,
-        order: pokemon.data.order,
-        shape: pokemon.data.shape,
-        color: pokemon.data.color,
-        generation: pokemon.data.generation,
-      };
-    });
+    const translatedPokemons: PokemonListItemType[] = pokemonData.map(
+      (pokemon) => {
+        return {
+          name: pokemon.data.name,
+          id: pokemon.data.id,
+          order: pokemon.data.order,
+          shape: pokemon.data.shape,
+          color: pokemon.data.color,
+          generation: pokemon.data.generation,
+        };
+      }
+    );
 
     return translatedPokemons;
   } catch (error) {

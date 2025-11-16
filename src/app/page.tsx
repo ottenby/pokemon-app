@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="pt-20 flex flex-col items-center">
+    <div className="pt-20 flex flex-col items-center p-4">
       <h1>Welcome to Pokemon App</h1>
       <Image
         width={400}

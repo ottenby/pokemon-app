@@ -3,11 +3,11 @@ import { capitalizeFirstLetter } from "@/utils/textUtils";
 import Image from "next/image";
 import Link from "next/link";
 
-type PokemonListItemType = {
-  pokemon: PokemonType;
+type PokemonListItemProps = {
+  pokemon: PokemonListItemType;
 };
 
-const PokemonListItem = ({ pokemon }: PokemonListItemType) => {
+const PokemonListItem = ({ pokemon }: PokemonListItemProps) => {
   return (
     <div className="flex items-center flex-col bg-white p-8 rounded-md">
       <Link

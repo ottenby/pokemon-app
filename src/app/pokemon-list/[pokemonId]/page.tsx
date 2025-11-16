@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import PrevAndNextPokemonLink from "./PrevAndNextPokemonLink";
 import PokemonInformation from "./PokemonInformation";
+import { PokemonStats } from "./PokemonStats/PokemonStats";
 
 const PokemonDetailsPage = () => {
   const params = useParams();
@@ -50,6 +51,7 @@ const PokemonDetailsPage = () => {
         )}
         <PokemonInformation pokemonData={data} />
       </div>
+      <PokemonStats stats={data?.stats} />
       <div className="flex flex-row gap-10 mt-10 w-full justify-between">
         {pokemonId > 1 && (
           <PrevAndNextPokemonLink currentPokemonId={pokemonId} action="minus" />

@@ -13,7 +13,7 @@ const Pokemons = () => {
   });
 
   const [filteredPokemons, setFilteredPokemon] = useState<
-    PokemonType[] | undefined
+    PokemonListItemType[] | undefined
   >([]);
   const [searchValue, setSearchValue] = useState("");
 
@@ -48,7 +48,7 @@ const Pokemons = () => {
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-10 md:mt-4 bg-gray-200 p-4 md:p-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-14 md:mt-4 bg-gray-200 p-4 md:p-8">
         {filteredPokemons?.map((pokemon, key) => (
           <PokemonListItem pokemon={pokemon} key={key} />
         ))}

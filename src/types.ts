@@ -1,19 +1,7 @@
-type PokemonType = {
+type PokemonListItemType = {
   name: string;
   id: number;
-  shape: PokemonGenericAttributeType;
-  color: PokemonGenericAttributeType;
-  generation: PokemonGenericAttributeType;
   order: number;
-};
-
-type PokemonGenericAttributeType = {
-  name: string;
-  url: string;
-};
-
-type PokemonEvolutionChainType = {
-  url: string;
 };
 
 type PokemonDetailsType = {
@@ -23,6 +11,13 @@ type PokemonDetailsType = {
   description?: string;
   types: PokemonDetailsTypeType[];
   image: string;
+  stats: PokemonDetailsStatsType[];
+};
+
+type PokemonDetailsStatsType = {
+  baseStat: number;
+  effort: number;
+  statName: string;
 };
 
 type PokemonDetailsTypeType =

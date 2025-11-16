@@ -1,4 +1,5 @@
-import PokemonTypePill from "@/components/PokemonTypePill/PokemonTypePill";
+import PokemonTypePill from "@/components/PokemonDetailsComponent/PokemonTypePill/PokemonTypePill";
+import { PokemonDetailsType } from "@/types";
 
 type PokemonInformationProps = {
   pokemonData?: PokemonDetailsType | null;

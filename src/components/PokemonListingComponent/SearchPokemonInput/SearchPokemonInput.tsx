@@ -8,7 +8,7 @@ export const SearchPokemonInput = ({
   setSearchValue,
 }: SearchPokemonInputProps) => {
   return (
-    <div className="flex flex-row justify-start bg-purple-500 md:bg-purple-700 md:bg-transparent sticky top-14 md:top-4 pl-6 py-2 md:ml-8 w-full md:w-fit">
+    <div className="flex flex-row justify-start bg-purple-500 md:bg-purple-700 md:bg-transparent sticky top-14 md:top-3 pl-6 py-2 md:ml-8 w-full md:w-fit">
       <label className="text-white" htmlFor="search-input">
         Search:
         <input

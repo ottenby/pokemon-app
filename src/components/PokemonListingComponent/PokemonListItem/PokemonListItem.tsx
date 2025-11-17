@@ -13,7 +13,7 @@ const PokemonListItem = ({ pokemon }: PokemonListItemProps) => {
     <div className="flex items-center flex-col bg-white p-8 rounded-md">
       <Link
         href={`pokemon-list/${pokemon.id}`}
-        className=" h-full flex flex-col gap-10"
+        className="w-full h-full flex flex-col gap-10 hover:bg-gray-100"
       >
         <h3 className="text-center font-semibold">
           {capitalizeFirstLetter(pokemon.name)}

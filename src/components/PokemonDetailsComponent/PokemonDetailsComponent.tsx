@@ -1,8 +1,8 @@
 import { PokemonDetailsType, PokemonListItemType } from "@/types";
 import { capitalizeFirstLetter } from "@/utils/textUtils";
-import PokemonInformation from "../PokemonInformation";
-import { PokemonStats } from "../PokemonStats/PokemonStats";
-import PrevAndNextPokemonLink from "../PrevAndNextPokemonLink";
+import PokemonInformation from "./PokemonInformation/PokemonInformation";
+import { PokemonStats } from "./PokemonStats/PokemonStats";
+import PrevAndNextPokemonLink from "./PrevAndNextPokemonLink/PrevAndNextPokemonLink";
 import Image from "next/image";
 
 type PokemonDetailsComponentProps = {

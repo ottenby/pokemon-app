@@ -1,11 +1,11 @@
 "use client";
 
-import PokemonListItem from "@/components/PokemonListingComponent/PokemonListItem";
+import PokemonListItem from "@/components/PokemonListingComponent/PokemonListItem/PokemonListItem";
 import { SearchPokemonInput } from "@/components/PokemonListingComponent/SearchPokemonInput/SearchPokemonInput";
 import { PokemonListItemType } from "@/types";
 import { useState } from "react";
 
-type PokemonListingComponentProps = {
+export type PokemonListingComponentProps = {
   pokemonList: PokemonListItemType[];
 };
 

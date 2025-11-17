@@ -1,5 +1,5 @@
 import { getAllGeneration1Pokemon, getPokemonById } from "@/api/pokemon-api";
-import { PokemonDetailsComponent } from "@/components/PokemonDetailsComponent/PokemonDetailsComponent/PokemonDetailsComponent";
+import { PokemonDetailsComponent } from "@/components/PokemonDetailsComponent/PokemonDetailsComponent";
 
 const getPokemonDetails = async (id: number) => {
   return await getPokemonById(id);

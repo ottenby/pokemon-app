@@ -1,6 +1,7 @@
 export const LeftArrowIcon = () => {
   return (
     <svg
+      data-testid="left-arrow-icon"
       xmlns="http://www.w3.org/2000/svg"
       fill="purple"
       width="40"

@@ -1,6 +1,7 @@
 export const RightArrowIcon = () => {
   return (
     <svg
+      data-testid="right-arrow-icon"
       xmlns="http://www.w3.org/2000/svg"
       fill="purple"
       width="40"

@@ -12,7 +12,10 @@ export const PokemonStats = ({ stats }: PokemonStatsProps) => {
       {stats?.map((stat, key) => {
         const roundedInt = Math.round(stat.baseStat / 10);
         return (
-          <div key={key} className="flex flex-col p-1 justify-start">
+          <div
+            key={key}
+            className="flex flex-col p-1 justify-start max-w-[64px]"
+          >
             <div className="flex flex-col gap-1">
               {Array.from(
                 { length: numberOfStatRows - roundedInt },

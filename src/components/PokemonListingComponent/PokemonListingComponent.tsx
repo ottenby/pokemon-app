@@ -13,7 +13,10 @@ export const PokemonListingComponent = ({
   pokemonList,
 }: PokemonListingComponentProps) => {
   const [searchValue, setSearchValue] = useState("");
-  const [filteredPokemons, setFilteredPokemons] = useState(pokemonList);
+
+  const filteredPokemons = pokemonList
+    .filter((pokemon) => pokemon.name.includes(searchValue))
+    .sort((a, b) => a.order - b.order);
 
   return (
     <div>

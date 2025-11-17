@@ -1,3 +1,4 @@
+import { PokemonDetailsStatsType } from "@/types";
 import { capitalizeFirstLetter } from "@/utils/textUtils";
 
 type PokemonStatsProps = {

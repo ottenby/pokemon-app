@@ -1,3 +1,4 @@
+import { PokemonDetailsTypeType } from "@/types";
 import { capitalizeFirstLetter } from "@/utils/textUtils";
 
 type PokemonTypePillProps = {
@@ -38,7 +39,7 @@ const PokemonTypePill = ({ type }: PokemonTypePillProps) => {
         " rounded-4xl p-4 flex justify-center items-center min-w-20"
       }
     >
-      <p>{type}</p>
+      <p>{capitalizeFirstLetter(type)}</p>
     </div>
   );
 };

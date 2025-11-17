@@ -45,11 +45,13 @@ export type FetchedPokemonDetailsType = {
 };
 
 export type FetchedCharacteristicType = {
-  description: string;
-  language: {
-    name: string;
-    url: string;
-  };
+  descriptions: {
+    description: string;
+    language: {
+      name: string;
+      url: string;
+    };
+  }[];
 };
 
 export type PokemonListItemType = {
@@ -68,7 +70,7 @@ export type PokemonDetailsType = {
   stats: PokemonDetailsStatsType[];
 };
 
-type PokemonDetailsStatsType = {
+export type PokemonDetailsStatsType = {
   baseStat: number;
   effort: number;
   statName: string;

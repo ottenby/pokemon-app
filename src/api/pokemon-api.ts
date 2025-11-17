@@ -20,21 +20,21 @@ export const getPokemonById = async (
     );
     const pokemonData: FetchedPokemonDetailsType = pokemonResponse.data;
 
-    let characteristicData: FetchedCharacteristicType[] | undefined;
+    let characteristicData: FetchedCharacteristicType | undefined;
     if (id < 31) {
-      // Fetch data from the Characteristic API for the same Pokemon ID if ID is lower than 31
+      // The api only has charactaristics for the first 30 pokemon for some reason.
       const characteristicResponse = await axios.get(
         `${POKEAPI_BASE_URL}/characteristic/${id}`
       );
-      characteristicData = characteristicResponse.data.descriptions;
+      characteristicData = characteristicResponse.data;
     } else characteristicData = undefined;
     return {
       name: pokemonData.name,
       height: pokemonData.height,
       weight: pokemonData.weight,
       description: characteristicData
-        ? characteristicData.find(
-            (characteristic) => characteristic.language.name === "en"
+        ? characteristicData.descriptions.find(
+            (description) => description.language.name === "en"
           )?.description
         : undefined,
       types: pokemonData.types.map((type) => type.type.name),

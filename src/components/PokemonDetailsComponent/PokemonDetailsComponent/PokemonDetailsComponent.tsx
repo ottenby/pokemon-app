@@ -18,26 +18,11 @@ export const PokemonDetailsComponent = ({
 }: PokemonDetailsComponentProps) => {
   return (
     <div className="bg-gray-100 flex flex-col items-center px-4 border rounded-md mx-auto md:max-w-200">
-      <h1>{capitalizeFirstLetter(pokemonData?.name)}</h1>
-      <div className="flex flex-col md:flex-row gap-3 lg:gap-14 items-center">
-        {pokemonData?.image && (
-          <Image
-            loading="eager"
-            className="max-w-50 w-full h-auto"
-            alt={pokemonData?.name}
-            width={100}
-            height={100}
-            src={pokemonData?.image}
-          />
-        )}
-        <PokemonInformation pokemonData={pokemonData} />
-      </div>
-      <PokemonStats stats={pokemonData?.stats} />
       <div className="flex flex-row gap-10 mt-10 w-full justify-between">
         {pokemonId > 1 && (
           <PrevAndNextPokemonLink
             adjacentPokemon={allPokemons.find(
-              (pokemon) => pokemon.id === pokemonId - 1
+              (pokemon) => pokemon.id === Number(pokemonId) - 1
             )}
             action="minus"
           />
@@ -51,6 +36,21 @@ export const PokemonDetailsComponent = ({
           />
         )}
       </div>
+      <h1>{capitalizeFirstLetter(pokemonData?.name)}</h1>
+      <div className="flex flex-col md:flex-row gap-3 lg:gap-14 items-center">
+        {pokemonData?.image && (
+          <Image
+            loading="eager"
+            className="max-w-50 w-full h-auto"
+            alt={pokemonData?.name}
+            width={0}
+            height={0}
+            src={pokemonData?.image}
+          />
+        )}
+        <PokemonInformation pokemonData={pokemonData} />
+      </div>
+      <PokemonStats stats={pokemonData?.stats} />
     </div>
   );
 };

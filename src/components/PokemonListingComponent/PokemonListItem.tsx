@@ -1,4 +1,5 @@
 "use client";
+import { PokemonListItemType } from "@/types";
 import { capitalizeFirstLetter } from "@/utils/textUtils";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,11 +19,11 @@ const PokemonListItem = ({ pokemon }: PokemonListItemProps) => {
           {capitalizeFirstLetter(pokemon.name)}
         </h3>
         <Image
-          className="w-full h-auto"
+          className="w-auto h-auto"
           loading="eager"
           alt={pokemon.name}
-          height={100}
-          width={100}
+          height={0}
+          width={0}
           src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
         />
       </Link>

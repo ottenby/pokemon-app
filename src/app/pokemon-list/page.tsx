@@ -1,3 +1,5 @@
+"use cache";
+
 import { getAllGeneration1Pokemon } from "@/api/pokemon-api";
 import { PokemonListingComponent } from "../../components/PokemonListingComponent/PokemonListingComponent";
 
